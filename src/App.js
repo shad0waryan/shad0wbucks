@@ -1,37 +1,37 @@
-import "./App.css";
-import Navbar from "./Components/Navbar";
+import './App.css';
+import Navbar from './Components/Navbar';
 import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "./firebase-config";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import star1 from "./assets/star.png";
-import star2 from "./assets/star (1).png";
-import Category from "./Components/category";
-import Card from "./Components/Card";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import Records from "./Components/items.json";
-import { useContext } from "react";
-import Footer from "./Components/Footer";
-import React, { useState } from "react";
-import { Mycartcontext } from "./context";
-import swal from "sweetalert";
+} from 'firebase/auth';
+import { auth } from './firebase-config';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import star1 from './assets/star.png';
+import star2 from './assets/star (1).png';
+import Category from './Components/category';
+import Card from './Components/Card';
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Records from './Components/items.json';
+import { useContext } from 'react';
+import Footer from './Components/Footer';
+import React, { useState } from 'react';
+import { Mycartcontext } from './context';
+import swal from 'sweetalert';
 export const Mycart = (props) => {
-  const [regEmail, setRegEmail] = useState("");
+  const [regEmail, setRegEmail] = useState('');
 
-  const [regPassword, setRegPassword] = useState("");
+  const [regPassword, setRegPassword] = useState('');
 
-  const [logEmail, setLogEmail] = useState("");
+  const [logEmail, setLogEmail] = useState('');
 
-  const [logPassword, setLogPassword] = useState("");
+  const [logPassword, setLogPassword] = useState('');
 
   const [curUser, setCurUser] = useState({});
 
@@ -50,10 +50,10 @@ export const Mycart = (props) => {
         regPassword
       );
       swal({
-        title: "Registered",
-        text: "You can now Login",
-        icon: "success",
-        button: "OK",
+        title: 'Registered',
+        text: 'You can now Login',
+        icon: 'success',
+        button: 'OK',
       });
     } catch (error) {
       alert(error.message);
@@ -119,13 +119,13 @@ function App() {
       <div className="welcome__bar text-[#ffffff] bg-darkgreen h-[80px] hover:cursor-pointer">
         <p className="font-bold text-s4">Welcome Tier Rewards Program</p>
         <span className="flex items-center">
-          <img src={star1} alt="" width={"24px"} height={"24px"} />
+          <img src={star1} alt="" width={'24px'} height={'24px'} />
           <p className="text-s6 ml-2">2</p>
           <p className="text-s4 ml-1 ">/5</p>
           <p className="text-s4 ml-1 ">stars</p>
         </span>
         <span className="flex items-center">
-          <img src={star2} alt="" width={"24px"} height={"24px"} />
+          <img src={star2} alt="" width={'24px'} height={'24px'} />
           <p className="text-s6 ml-2">3</p>
           <p className="text-s4 ml-1 ">Rewards</p>
         </span>
@@ -136,7 +136,7 @@ function App() {
         </span>
         <ArrowCircleRightIcon
           className="right__arrow"
-          style={{ color: "white" }}
+          style={{ color: 'white' }}
         />
       </div>
       {/* Balance */}
@@ -152,39 +152,39 @@ function App() {
         <div className="categories__list flex  justify-evenly mt-5">
           <Category
             photoUrl={
-              "https://hips.hearstapps.com/del.h-cdn.co/assets/17/51/1513892402-starbucks-black-and-white-mocha-2.jpg"
+              'https://hips.hearstapps.com/del.h-cdn.co/assets/17/51/1513892402-starbucks-black-and-white-mocha-2.jpg'
             }
-            name={"Bestseller"}
+            name={'Bestseller'}
           />
           <Category
             photoUrl={
-              "https://res.cloudinary.com/swiggy/image/upload/f_auto,q_auto,fl_lossy/182191ab163770437b62861a6f987709"
+              'https://www.refinery29.com/images/9812969.jpg?format=webp&width=720&height=864&quality=85&crop=5%3A6'
             }
-            name={"Drinks"}
+            name={'Drinks'}
           />
           <Category
             photoUrl={
-              "https://www.foodbusinessnews.net/-/media/8C28927BD2844918A2CBC7810086146A.ashx?h=300&w=432"
+              'https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2024-06/BRUNCH%20MENU%20INDIA.jpg'
             }
-            name={"Food"}
+            name={'Food'}
           />
           <Category
             photoUrl={
-              "https://cdn.shopify.com/s/files/1/0256/8024/8929/products/76df240c-ec5c-4636-81cc-9a8a32c26f9d1649064010201BarandDrinkware1.webp?v=1656499764&width=1445"
+              'https://cdn.shopify.com/s/files/1/0256/8024/8929/products/76df240c-ec5c-4636-81cc-9a8a32c26f9d1649064010201BarandDrinkware1.webp?v=1656499764&width=1445'
             }
-            name={"Merchandise"}
+            name={'Merchandise'}
           />
           <Category
             photoUrl={
-              "https://starbucks-cdn-01.s3.ap-south-1.amazonaws.com/Category/Small/CoffeeAtHome.jpg"
+              'https://athome.starbucks.com/sites/default/files/2022-05/CAH_PDP_House_1842x1542_Ground_shadow.png'
             }
-            name={"Coffee At Home"}
+            name={'Coffee At Home'}
           />
           <Category
             photoUrl={
-              "https://starbucks-cdn-01.s3.ap-south-1.amazonaws.com/Category/Small/ReadyToEat.jpg"
+              'https://www.starbucks.in/assets/icon/ReadyToEat.webp'
             }
-            name={"Ready to Eat"}
+            name={'Ready to Eat'}
           />
         </div>
       </div>

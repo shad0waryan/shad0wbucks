@@ -6,7 +6,7 @@ import { Mycartcontext } from "../context";
 import { useContext } from "react";
 
 function Card({ id, photoUrl, name, vg, nvg, price }) {
-  const a = useContext(Mycartcontext);
+  const a = useContext(Mycartcontext); 
   const { cart, setCart, subTotal, setSubTotal } = a;
 
   const addToCart = (id, photoUrl, name, vg, nvg, price) => {
