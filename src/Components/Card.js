@@ -6,14 +6,22 @@ import { Mycartcontext } from "../context";
 import { useContext } from "react";
 
 function Card({ id, photoUrl, name, vg, nvg, price }) {
-  const a = useContext(Mycartcontext); 
-  const { cart, setCart, subTotal, setSubTotal } = a;
+  const a = useContext(Mycartcontext);
+  const { setCart, setSubTotal } = a;
 
   const addToCart = (id, photoUrl, name, vg, nvg, price) => {
-    let newCart = JSON.parse(JSON.stringify(cart));
-    newCart = { id, photoUrl, name, vg, nvg, price };
-    setCart([...cart, newCart]);
-    setSubTotal(subTotal + price);
+    const newCart = {
+      cartId: crypto.randomUUID(),
+      id,
+      photoUrl,
+      name,
+      vg,
+      nvg,
+      price,
+    };
+
+    setCart((prev) => [...prev, newCart]);
+    setSubTotal((prev) => prev + price);
   };
 
   return (

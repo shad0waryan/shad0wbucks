@@ -8,11 +8,18 @@ import { Link } from "react-router-dom";
 
 function Cart() {
   const a = useContext(Mycartcontext);
-  const { cart, setCart, subTotal, setSubTotal } = a;
-  const taxes = (subTotal * 18) / 100;
-  const removeFromCart = (itemid, price) => {
-    setCart(cart.filter((obj) => obj.id !== itemid));
-    setSubTotal(subTotal - price);
+  const { cart, setCart } = a;
+  const subTotal = cart.reduce((total, item) => total + Number(item.price), 0);
+
+  const taxRate = 0.18;
+  const taxes = subTotal * taxRate;
+
+  const serviceCharge = 0;
+  const discount = 0;
+
+  const grandTotal = subTotal + taxes + serviceCharge - discount;
+  const removeFromCart = (cartId, price) => {
+    setCart((prev) => prev.filter((item) => item.cartId !== cartId));
   };
   return (
     <div className="flex-col">
@@ -29,9 +36,9 @@ function Cart() {
       </div>
       <div className="mb-12">
         {cart.map((item) => {
-          const { id, photoUrl, name, vg, nvg, price } = item;
+          const { cartId, photoUrl, name, vg, nvg, price } = item;
           return (
-            <div className="flex-col items-center">
+            <div key={item.cartId} className="flex-col items-center">
               <div className=" flex items-center justify-between pl-24 pr-24">
                 <div className="flex">
                   <img
@@ -58,9 +65,7 @@ function Cart() {
                   </div>
                   <div>
                     <button
-                      onClick={() => {
-                        removeFromCart(id, price);
-                      }}
+                      onClick={() => removeFromCart(cartId)}
                       className="ml-12 hover:scale-105 bg-red pl-3 pr-3 pt-2 pb-2 rounded-3xl text-white hover:bg-darkred"
                     >
                       Remove
@@ -108,7 +113,7 @@ function Cart() {
           <p className="text-s5 font-bold text-darkgrey">GRAND TOTAL:</p>
           <p className="text-s4 font-semibold text-darkgrey">
             {" "}
-            ₹ {parseFloat(subTotal + taxes).toFixed(2)}
+            ₹ {parseFloat(grandTotal).toFixed(2)}
           </p>
         </span>
       </div>
